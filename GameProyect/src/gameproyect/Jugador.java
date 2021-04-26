@@ -9,15 +9,20 @@ package gameproyect;
  *
  * @author Julian
  */
-public class Jugador {
+public class Jugador{
     
     private String nombre;
     private double recorrido;
-
+    
+    
     public Jugador(String nombre, double recorrido) {
         this.nombre = nombre;
         this.recorrido = recorrido;
     }
+    
+    public Jugador(){
+        
+    }    
 
     public String getNombre() {
         return nombre;
@@ -34,25 +39,10 @@ public class Jugador {
     public void setRecorrido(double recorrido) {
         this.recorrido = recorrido;
     }
-
     
-    public String mostrarGanador(){
-        return "El ganador es: " + nombre;
-    }
-
     @Override
     public String toString() {
         return nombre;
-    }
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }    
     
 }

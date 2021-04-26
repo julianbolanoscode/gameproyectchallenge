@@ -22,13 +22,13 @@ public class GameProyect {
         int numeroJugadores;
         int banderaDo=0;
         
-        System.out.println("Digite la cantidad de jugadores que participarán en el juego");
-        numeroJugadores = leer.nextInt();
-                
+        Juego juego = new Juego();
+        juego.validacionNumeroJugadores();
+        numeroJugadores=juego.getNumeroJugadores();        
+                              
         Jugador jugador[] = new Jugador[numeroJugadores];
         
         for (int i = 0; i < jugador.length; i++) {            
-                leer.nextLine();
                 System.out.println("Digite el nombre del jugador " + (i+1));
                 nombre = leer.nextLine();
                 recorrido = 0;
@@ -39,10 +39,10 @@ public class GameProyect {
         for (int i = 0; i < jugador.length; i++) {   
                 System.out.println("------------------------------------------------------------");
                 System.out.println("El nombre del jugador "+ (i+1)+" es: "+jugador[i].getNombre());
-                System.out.println("Se le ha asignado el coche número: "+ (i+1) + " y el carril número " + (i+1));
-                System.out.println("Su recorrido es "+jugador[i].getRecorrido());  
+                System.out.println("Se le ha asignado el coche número: "+ (i+1));
+                System.out.println("Se le ha asignado el carril número: " + (i+1));  
                 System.out.println("------------------------------------------------------------");
-        }
+        }       
         
         Circuito circuito = new Circuito();
         circuito.escogerPista();
@@ -61,8 +61,8 @@ public class GameProyect {
             dado=dado+jugador[i].getRecorrido();
             jugador[i].setRecorrido(dado);
             System.out.println("El recorrido del jugador es " + jugador[i].getRecorrido());
-            if (jugador[i].getRecorrido()>=circuito.getKilometros()) {
-                System.out.println("El jugador" + jugador[i].getNombre() + "ha llegado a la meta");
+            if (jugador[i].getRecorrido()>=circuito.getKilometros()) {                
+                System.out.println("El jugador " + jugador[i].getNombre() + " ha llegado a la meta");
                 banderaDo=1;
                 break;
             }else{
@@ -77,14 +77,7 @@ public class GameProyect {
                 System.out.println("------------------------------------------------------------");
                 System.out.println("Nombre " + jugador[i].getNombre() + " Ha recorrido " +jugador[i].getRecorrido());  
                 System.out.println("------------------------------------------------------------");
-        }
-        
-        
-        
-        
-        
-        
-        
+        }              
         
     }
     

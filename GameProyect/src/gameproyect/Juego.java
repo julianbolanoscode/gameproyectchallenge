@@ -15,13 +15,29 @@ public class Juego {
     
     
     Scanner leer = new Scanner(System.in);
+    int numeroJugadores;
     
         
-    public void numerojugadores(){
-        
-               
+    public void validacionNumeroJugadores(){
+        int banderaDo=0;
+        do {            
+        System.out.println("Digite la cantidad de jugadores que participarán en el juego");
+        numeroJugadores = leer.nextInt();            
+            if (numeroJugadores>=3) {
+                banderaDo=1;
+            }else{
+                System.out.println("La cantidad minima de jugadores deben ser: 3");
+            }
+        } while (banderaDo==0);               
     }
-    
+
+    public int getNumeroJugadores() {
+        return numeroJugadores;
+    }
+
+    public void setNumeroJugadores(int numeroJugadores) {
+        this.numeroJugadores = numeroJugadores;
+    }  
     
     
 }
