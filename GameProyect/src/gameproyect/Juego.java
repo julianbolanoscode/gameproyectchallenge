@@ -16,7 +16,8 @@ public class Juego {
     
     Scanner leer = new Scanner(System.in);
     int numeroJugadores;
-    
+    int desicion;
+    int Bandera=0;
         
     public void validacionNumeroJugadores(){
         int banderaDo=0;
@@ -30,6 +31,10 @@ public class Juego {
             }
         } while (banderaDo==0);               
     }
+    
+    public void nuevoJuego(){            
+            
+    }
 
     public int getNumeroJugadores() {
         return numeroJugadores;
@@ -38,6 +43,14 @@ public class Juego {
     public void setNumeroJugadores(int numeroJugadores) {
         this.numeroJugadores = numeroJugadores;
     }  
+
+    public int getBandera() {
+        return Bandera;
+    }
+
+    public void setBandera(int Bandera) {
+        this.Bandera = Bandera;
+    }
     
     
 }
