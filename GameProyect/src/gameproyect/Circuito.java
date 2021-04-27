@@ -2,6 +2,7 @@
 package gameproyect;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 
 public class Circuito {
@@ -15,16 +16,12 @@ public class Circuito {
         int bandera=0;
                 
         do {
-            System.out.println("Selecciona la pista en la que desean participar");
-            System.out.println("1. pista: 1km");
-            System.out.println("2. pista: 2km");
-            System.out.println("3. pista: 3km");
-            seleccion = leer.nextInt();
-            
+            seleccion = Integer.parseInt(JOptionPane.showInputDialog("Selecciona la pista en la que desean participar \n 1. Pista: 1km \n 2. Pista: 2km \n 3. Pista: 3km"));
+             
             if (seleccion>=1 && seleccion<=3) {
                 bandera = 1;
             }else{
-                System.out.println("Elección incorrecta, intenta de nuevo");
+                JOptionPane.showMessageDialog(null,"Elección incorrecta, intenta de nuevo");
             }
             
         } while (bandera==0);        
@@ -36,7 +33,7 @@ public class Circuito {
             case 3: kilometros=3000;
             break;
         }
-        System.out.println("Esta pista tiene: " + kilometros + " metros");
+        JOptionPane.showMessageDialog(null,"Esta pista tiene: " + kilometros + " metros");
     }
 
     public int getSeleccion() {

@@ -6,6 +6,7 @@
 package gameproyect;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,12 +23,11 @@ public class Juego {
     public void validacionNumeroJugadores(){
         int banderaDo=0;
         do {            
-        System.out.println("Digite la cantidad de jugadores que participarán en el juego");
-        numeroJugadores = leer.nextInt();            
+            numeroJugadores = Integer.parseInt(JOptionPane.showInputDialog("Digite el número de jugadores que desean jugar"));
             if (numeroJugadores>=3) {
                 banderaDo=1;
             }else{
-                System.out.println("La cantidad minima de jugadores deben ser: 3");
+                JOptionPane.showMessageDialog(null,"La cantidad minima de jugadores deben ser: 3");
             }
         } while (banderaDo==0);               
     }

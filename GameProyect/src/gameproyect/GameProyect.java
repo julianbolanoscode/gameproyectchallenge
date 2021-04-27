@@ -2,6 +2,7 @@
 package gameproyect;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class GameProyect {
 
@@ -25,46 +26,36 @@ public class GameProyect {
         Jugador jugador[] = new Jugador[numeroJugadores]; //array general donde se guardan los nombres y recorrido de cada jugador
         
         for (int i = 0; i < jugador.length; i++) {      // Estructura para llenar el array de nombres      
-                System.out.println("Digite el nombre del jugador " + (i+1));
-                leer.nextLine();
-                nombre = leer.nextLine();
+                nombre = JOptionPane.showInputDialog("Digite el nombre del jugador " + (i+1));
                 recorrido = 0;
                 Jugador mijugador = new Jugador(nombre,recorrido);
                 jugador[i]= mijugador;
-                                   
         }           
         for (int i = 0; i < jugador.length; i++) {   //Estructura para mostrar los nombres
-                System.out.println("------------------------------------------------------------");
-                System.out.println("El nombre del jugador "+ (i+1)+" es: "+jugador[i].getNombre());
-                System.out.println("Se le ha asignado el coche número: "+ (i+1));
-                System.out.println("Se le ha asignado el carril número: " + (i+1));  
-                System.out.println("------------------------------------------------------------");
+                JOptionPane.showMessageDialog(null,"El nombre del jugador "+ (i+1)+" es: "+jugador[i].getNombre() + "\n Se le ha asignado el coche número: " + (i+1));
         }       
         
         Circuito circuito = new Circuito(); //Metodo para escoger el circuito
         circuito.escogerPista();
                 
-        System.out.println("Comienza el juego");
+        JOptionPane.showMessageDialog(null,"Comienza el juego");
         
         do {
             for (int i = 0; i < jugador.length; i++) { //Estructura para funcionamiento de rondas
-            System.out.println("Turno del jugador " + (i+1));
-            System.out.println("Oprima ENTER para lanzar el dado"); 
-            leer.nextLine();
-            System.out.println("**Tirando el dado**");
+            JOptionPane.showMessageDialog(null,"Turno del jugador " + (i+1));
+            JOptionPane.showMessageDialog(null,"Oprima ENTER para lanzar el dado");
             dado = Math.floor(Math.random()*(6-1+1)+1); // Uso de clase Math para simular funcion de un dado común
-            System.out.println("El valor del dado es: "+ dado);
+            JOptionPane.showMessageDialog(null,"El valor del dado es: "+ dado);
             dado=dado*100;
             dado=dado+jugador[i].getRecorrido();
             jugador[i].setRecorrido(dado);
-            System.out.println("El recorrido del jugador es " + jugador[i].getRecorrido());
+            JOptionPane.showMessageDialog(null,"El recorrido del jugador es " + jugador[i].getRecorrido());
             if (jugador[i].getRecorrido()>=circuito.getKilometros()) {                
-                System.out.println("El jugador " + jugador[i].getNombre() + " ha llegado a la meta");
+                JOptionPane.showMessageDialog(null,"El jugador " + jugador[i].getNombre() + " ha llegado a la meta");
                 banderaDo=1;
                 break;
             }else{
-                System.out.println("Ningun jugador ha llegado a la meta, siguiente jugador\n");
-                System.out.println("--------------------------------------------------------");
+                JOptionPane.showMessageDialog(null,"No has llegado a la meta, siguiente turno");
             }
             }
         } while (banderaDo==0);
@@ -80,24 +71,21 @@ public class GameProyect {
                 }
             }
         }
-        System.out.println("Así ha quedado el podio:\n"); // Estructura para mostrar el podio
+        // Estructura para mostrar el podio
         for (int i = (jugador.length-1); i >=0; i--) {
-            System.out.println("---------------------------------------------------------");
-            System.out.println((i+1) + " " + jugador[i].getNombre() + " - " + jugador[i].getRecorrido());
-            System.out.println("---------------------------------------------------------");
+            JOptionPane.showMessageDialog(null,"Así ha quedado el podio: " + (i+1) + " " + jugador[i].getNombre() + " - " + jugador[i].getRecorrido()+"\n");
+        
             }           
         
         //Validación nuevo juego (Marque 1 si quiere seguir jugando, marque 2 si quiere salir del juego)
         
-        System.out.println("Desea jugar de nuevo?");
-            System.out.println("1. SI \n 2. NO");
-            int desicion=0;
-            desicion=leer.nextInt();
         
+            int desicion=0;
+            desicion = Integer.parseInt(JOptionPane.showInputDialog("Desea seguir jugando \n 1. SI \n 2. NO"));
             if (desicion==1) {
-                System.out.println("Siguiente partida:");
+                JOptionPane.showMessageDialog(null,"Siguiente partida:");
             }else{
-                System.out.println("Gracias por jugar");
+                JOptionPane.showMessageDialog(null,"Gracias por jugar");
                 Bandera=1;                               
             }
             
